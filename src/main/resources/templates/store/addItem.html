@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="store/base :: storeHead"></th:block>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<th:block th:replace="store/base :: storeNav"></th:block>
+<th:block th:replace="store/base :: storeFooter"></th:block>
+<div class="container">
+    <div class="row col-sm justify-content-center">
+        <form action="#" th:action="@{/store/addItem}" th:object="${newItem}" method="post">
+            <input type="hidden" th:field="*{item_id}"/>
+            <h1>Add new product</h1>
+
+            <label for="name">Name</label>
+            <input type="text" class="form-control" th:field="*{item_title}" id="name" placeholder="Product name"
+                   autofocus="autofocus"/>
+            <span th:if="${#fields.hasErrors('item_title')}" th:errors="*{item_title}"></span>
+            <br/>
+
+            <label for="price">Price</label>
+            <input type="number" class="form-control" th:field="*{item_price}" id="price" placeholder="$0.00" step="0.01"/>
+            <span th:if="${#fields.hasErrors('item_price')}" th:errors="*{item_price}"></span>
+            <br/>
+
+            <label for="description">Description</label>
+            <input type="text" class="form-control" th:field="*{item_desc}" id="description" placeholder="Description"/>
+            <span th:if="${#fields.hasErrors('item_desc')}" th:errors="*{item_desc}"></span>
+            <br/>
+
+            <label for="image">Image</label>
+            <input type="file" class="form-control" th:field="*{item_img}" id="image" placeholder="Image file"/>
+            <br/>
+
+            <label for="discount">Discount percent</label>
+            <input type="number" class="form-control" th:field="*{item_disc}" id="discount" placeholder="0.0%" step="1"/>
+            <span th:if="${#fields.hasErrors('item_disc')}" th:errors="*{item_disc}"></span>
+            <br/>
+
+            <label for="stock">Number in stock</label>
+            <input type="number" class="form-control" th:field="*{item_stock}" id="stock" placeholder="0"/>
+            <span th:if="${#fields.hasErrors('item_stock')}" th:errors="*{item_stock}"></span>
+            <br/>
+
+            <span><label for="item_taxable">Taxable </label>
+            <input type="checkbox" class="form-control" th:field="*{item_taxable}" id="item_taxable" /></span>
+            <br/>
+
+            <label for="dept">Department</label>
+            <input type="text" class="form-control" th:field="*{item_cat_id}" id="dept" placeholder="Grocery, Furniture"/>
+            <span th:if="${#fields.hasErrors('item_cat_id')}" th:errors="*{item_cat_id}"></span>
+            <br/>
+
+            <button type="submit" class="btn btn-primary">Submit</button>  <button type="reset" class="btn btn-primary">Reset</button>
+        </form>
+    </div>
+</div>
+
+</body>
+<th:block th:replace="store/base :: storeJS"></th:block>
+</html>
