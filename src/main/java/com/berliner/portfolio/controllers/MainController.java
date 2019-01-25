@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
 
 @Controller
 public class MainController
@@ -55,36 +54,26 @@ public class MainController
     }
 
     @PostMapping({"/store/addItem","/addItem"})
-    public String addProduct(@Valid @ModelAttribute("newItem")Item item, BindingResult result)
+    public String addProduct(@Valid @ModelAttribute("newItem")Item item, Model model, BindingResult result)
     {
+        System.out.println("post addItem");
         if(result.hasErrors())
         {
-            System.out.println("Problem");
-            System.out.println(result.getErrorCount());
             return "store/addItem";
         }
         itemRepo.save(item);
-        System.out.println("No Problem");
 
-        return "store/showItems";
+        return "store/showAdded";
     }
 
-
-    @GetMapping("/update/{p_id}")
-    public String updateItem(@PathVariable("p_id") long id, Model model)
+    @GetMapping({"/store/showDetail/{item_id}","/showDetail/{item_id}"})
+    public String showDetail(@PathVariable ("item_id") long id, Model model)
     {
-        //model.addAttribute("newItem", itemRepo.findById(id));
-        model.addAttribute("newItem", itemRepo.findAll());
-
-        return "store/additem";
-
+        System.out.println("showDetail");
+        model.addAttribute("item", itemRepo.findById(id));
+        return "store/showDetail";
     }
 
-    @GetMapping("/addstock/{p_id}")
-    public String updateStock(@PathVariable("p_id") long id, Model model)
-    {
-        model.addAttribute("changeItem", itemRepo.findAll());
-        return "store/addstock";
 
-    }
+
 }
