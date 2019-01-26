@@ -24,6 +24,8 @@
                     <td th:text="*{item_stock}"></td>
                     <td th:text="*{item_cat_id}"></td>
                     <td th:text="*{item_taxable} ? 'Yes' : 'No'"></td>
+                    <td><a th:href="@{/store/update/{id}(id=${item_id})}">Modify</a></td>
+                    <td><a th:href="@{/deleteproduct/{id}(id=${item_id})}">Delete</a></td>
                 </tr>
             </table>
         </div>

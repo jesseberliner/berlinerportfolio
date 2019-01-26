@@ -40,7 +40,7 @@
                     <td th:text="*{item_taxable} ? 'Yes' : 'No'"></td>
                     <td th:text="*{item_created}"></td>
                     <td th:text="*{item_owner}"></td>
-                    <td><a th:href="@{/update/{id}(id=${item_id})}">Modify</a></td>
+                    <td><a th:href="@{/store/update/{id}(id=${item_id})}">Modify</a></td>
                     <td><a th:href="@{/deleteproduct/{id}(id=${item_id})}">Delete</a></td>
                     </tr>
                 </table>

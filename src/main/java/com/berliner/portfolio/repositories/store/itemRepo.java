@@ -7,9 +7,10 @@ import java.util.Set;
 
 public interface itemRepo extends CrudRepository<Item, Long>
 {
-    //Set<Item> findByitem_archivedIsFalse();
-//    Set<Item> findAllByItem_cat_idIs(long catId);
-      Item findById(long id);
+
+    Item findById(long id);
+
+
 
 }
 

@@ -49,6 +49,8 @@ public class Item
 
     private boolean item_archived;
 
+    private boolean item_approved;
+
     public Item()
     {
         this.item_archived = false;
@@ -174,5 +176,15 @@ public class Item
     public void setItem_archived(boolean item_archived)
     {
         this.item_archived = item_archived;
+    }
+
+    public boolean isItem_approved()
+    {
+        return item_approved;
+    }
+
+    public void setItem_approved(boolean item_approved)
+    {
+        this.item_approved = item_approved;
     }
 }
