@@ -15,9 +15,9 @@
                     <img class="card-img-top" src="../img/store/puppy1.jpg" alt="" >
                     <div class="card-body">
                         <div class="card-body">
-                            <h1 class="card-title" th:text="*{item_title}"></h1>
-                            <p class="card-text" th:text="'$'+*{item_price}"></p>
-                            <p class="card-text" th:text="*{#strings.abbreviate(item_desc, 50)}"></p>
+                            <h1 class="card-title" th:text="*{itemTitle}"></h1>
+                            <p class="card-text" th:text="'$'+*{itemPrice}"></p>
+                            <p class="card-text" th:text="*{#strings.abbreviate(itemDesc, 50)}"></p>
                         </div>
                     </div>
                 </div>
@@ -30,18 +30,18 @@
 
                 <table th:object="${newItem}" class="table table-striped table-bordered">
                     <tr>
-                    <td th:text="*{item_title}"></td>
-                    <td th:text="*{item_img}"></td>
-                    <td th:text="*{item_desc}"></td>
-                    <td th:text="'$'+*{item_price}"></td>
-                    <td th:text="*{item_disc}+'%'"></td>
-                    <td><a th:text="*{item_stock}" th:href="@{/addstock/{id}(id=${item_id})}"></a></td>
-                    <td th:text="*{item_cat_id}"></td>
-                    <td th:text="*{item_taxable} ? 'Yes' : 'No'"></td>
-                    <td th:text="*{item_created}"></td>
-                    <td th:text="*{item_owner}"></td>
-                    <td><a th:href="@{/store/update/{id}(id=${item_id})}">Modify</a></td>
-                    <td><a th:href="@{/deleteproduct/{id}(id=${item_id})}">Delete</a></td>
+                    <td th:text="*{itemTitle}"></td>
+                    <td th:text="*{itemImg}"></td>
+                    <td th:text="*{itemDesc}"></td>
+                    <td th:text="'$'+*{itemPrice}"></td>
+                    <td th:text="*{itemDisc}+'%'"></td>
+                    <td><a th:text="*{itemStock}" th:href="@{/addstock/{id}(id=${newItem.getItemId()})}"></a></td>
+                    <td th:text="*{itemCatId}"></td>
+                    <td th:text="*{itemTaxable} ? 'Yes' : 'No'"></td>
+                    <td th:text="*{itemCreated}"></td>
+                    <td th:text="*{itemOwner}"></td>
+                    <td><a th:href="@{/store/update/{id}(id=${newItem.getItemId()})}">Modify</a></td>
+                    <td><a th:href="@{/store/delete/{id}(id=${newItem.getItemId()})}">Delete</a></td>
                     </tr>
                 </table>
             </div>
@@ -50,18 +50,18 @@
     </div>
 </div>
 <!--<tr th:each="list: ${allProducts}">-->
-<!--<td th:text="*{item.item_name}"></td>-->
-<!--<td th:text="*{item.item_imgFile}"></td>-->
-<!--<td th:text="*{item.item_desc}"></td>-->
-<!--<td th:text="*{item.item_sku}"></td>-->
-<!--<td th:text="*{item.item_upc}"></td>-->
-<!--<td th:text="'$'+*{item.item_price}"></td>-->
-<!--<td th:text="*{item.item_discount}+'%'"></td>-->
-<!--<td><a th:text="*{item.item_numInStock}" th:href="@{/addstock/{id}(id=${item.item_id})}"></a></td>-->
-<!--<td th:text="*{item.item_department}"></td>-->
+<!--<td th:text="*{item.itemname}"></td>-->
+<!--<td th:text="*{item.itemImgFile}"></td>-->
+<!--<td th:text="*{item.itemDesc}"></td>-->
+<!--<td th:text="*{item.itemSku}"></td>-->
+<!--<td th:text="*{item.itemupc}"></td>-->
+<!--<td th:text="'$'+*{item.itemPrice}"></td>-->
+<!--<td th:text="*{item.itemDiscount}+'%'"></td>-->
+<!--<td><a th:text="*{item.itemnumInStock}" th:href="@{/addstock/{id}(id=${item.itemId})}"></a></td>-->
+<!--<td th:text="*{item.itemDepartment}"></td>-->
 <!--<td th:text="*{list.taxable} ? 'Yes' : 'No'"></td>-->
-<!--<td><a th:href="@{/update/{id}(id=${item.item_id})}">Modify</a></td>-->
-<!--<td><a th:href="@{/deleteproduct/{id}(id=${item.item_id})}">Delete</a></td>-->
+<!--<td><a th:href="@{/update/{id}(id=${item.itemId})}">Modify</a></td>-->
+<!--<td><a th:href="@{/deleteproduct/{id}(id=${item.itemId})}">Delete</a></td>-->
 <!--</tr>-->
 <!---->
 <th:block th:replace="store/base :: storeFooter"></th:block>

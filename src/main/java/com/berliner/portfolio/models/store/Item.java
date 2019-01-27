@@ -14,177 +14,205 @@ public class Item
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long item_id;
+    private long itemId;
 
     @NotEmpty
-    private String item_title;
+    private String itemTitle;
 
     @NotNull
     @Min(0)
-    private Double item_price;
+    private Double itemPrice;
 
     @NotEmpty
-    private String item_desc;
+    private String itemDesc;
 
 
-    private String item_img;
+    private String itemImg;
 
     @Min(0)
-    private int item_disc;
+    private int itemDisc;
 
     @NotNull
-    private int item_stock;
+    private int itemStock;
 
     @NotNull
-    private boolean item_taxable;
+    private boolean itemTaxable;
 
     @NotNull
-    private Date item_created;
+    private Date itemCreated;
 
     @NotNull
-    private String item_owner;
+    private Date itemLastEdited;
 
     @NotNull
-    private long item_cat_id;
+    private String itemOwner;
 
-    private boolean item_archived;
+    @NotNull
+    private String itemLastEditor;
 
-    private boolean item_approved;
+    @NotNull
+    private long itemCatId;
+
+    private boolean itemArchived;
+
+    private boolean itemApproved;
 
     public Item()
     {
-        this.item_archived = false;
-        this.item_created = new Date();
-        this.item_owner = "NullOwner";
+        this.itemArchived = false;
+        this.itemCreated = new Date();
+        this.itemOwner = "NullOwner";
+        this.itemLastEdited = new Date();
+        this.itemLastEditor = "lastNullOwner";
     }
 
-    public long getItem_id()
+    public long getItemId()
     {
-        return item_id;
+        return itemId;
     }
 
-    public void setItem_id(long item_id)
+    public void setItemId(long itemId)
     {
-        this.item_id = item_id;
+        this.itemId = itemId;
     }
 
-    public String getItem_title()
+    public String getItemTitle()
     {
-        return item_title;
+        return itemTitle;
     }
 
-    public void setItem_title(String item_title)
+    public void setItemTitle(String itemTitle)
     {
-        this.item_title = item_title;
+        this.itemTitle = itemTitle;
     }
 
-    public Double getItem_price()
+    public Double getItemPrice()
     {
-        return item_price;
+        return itemPrice;
     }
 
-    public void setItem_price(Double item_price)
+    public void setItemPrice(Double itemPrice)
     {
-        this.item_price = item_price;
+        this.itemPrice = itemPrice;
     }
 
-    public String getItem_desc()
+    public String getItemDesc()
     {
-        return item_desc;
+        return itemDesc;
     }
 
-    public void setItem_desc(String item_desc)
+    public void setItemDesc(String itemDesc)
     {
-        this.item_desc = item_desc;
+        this.itemDesc = itemDesc;
     }
 
-    public String getItem_img()
+    public String getItemImg()
     {
-        return item_img;
+        return itemImg;
     }
 
-    public void setItem_img(String item_img)
+    public void setItemImg(String itemImg)
     {
-        this.item_img = item_img;
+        this.itemImg = itemImg;
     }
 
-    public int getItem_disc()
+    public int getItemDisc()
     {
-        return item_disc;
+        return itemDisc;
     }
 
-    public void setItem_disc(int item_disc)
+    public void setItemDisc(int itemDisc)
     {
-        this.item_disc = item_disc;
+        this.itemDisc = itemDisc;
     }
 
-    public int getItem_stock()
+    public int getItemStock()
     {
-        return item_stock;
+        return itemStock;
     }
 
-    public void setItem_stock(int item_stock)
+    public void setItemStock(int itemStock)
     {
-        this.item_stock = item_stock;
+        this.itemStock = itemStock;
     }
 
-    public boolean isItem_taxable()
+    public boolean isItemTaxable()
     {
-        return item_taxable;
+        return itemTaxable;
     }
 
-    public void setItem_taxable(boolean item_taxable)
+    public void setItemTaxable(boolean itemTaxable)
     {
-        this.item_taxable = item_taxable;
+        this.itemTaxable = itemTaxable;
     }
 
-    public Date getItem_created()
+    public Date getItemCreated()
     {
-        return item_created;
+        return itemCreated;
     }
 
-    public void setItem_created(Date item_created)
+    public void setItemCreated(Date itemCreated)
     {
-        this.item_created = item_created;
+        this.itemCreated = itemCreated;
     }
 
-    public String getItem_owner()
+    public Date getItemLastEdited()
     {
-        return item_owner;
+        return itemLastEdited;
     }
 
-    public void setItem_owner(String item_owner)
+    public void setItemLastEdited(Date itemLastEdited)
     {
-        this.item_owner = item_owner;
+        this.itemLastEdited = itemLastEdited;
     }
 
-    public long getItem_cat_id()
+    public String getItemOwner()
     {
-        return item_cat_id;
+        return itemOwner;
     }
 
-    public void setItem_cat_id(long item_cat_id)
+    public void setItemOwner(String itemOwner)
     {
-        this.item_cat_id = item_cat_id;
+        this.itemOwner = itemOwner;
     }
 
-    public boolean isItem_archived()
+    public String getItemLastEditor()
     {
-        return item_archived;
+        return itemLastEditor;
     }
 
-    public void setItem_archived(boolean item_archived)
+    public void setItemLastEditor(String itemLastEditor)
     {
-        this.item_archived = item_archived;
+        this.itemLastEditor = itemLastEditor;
     }
 
-    public boolean isItem_approved()
+    public long getItemCatId()
     {
-        return item_approved;
+        return itemCatId;
     }
 
-    public void setItem_approved(boolean item_approved)
+    public void setItemCatId(long itemCatId)
     {
-        this.item_approved = item_approved;
+        this.itemCatId = itemCatId;
+    }
+
+    public boolean isItemArchived()
+    {
+        return itemArchived;
+    }
+
+    public void setItemArchived(boolean itemArchived)
+    {
+        this.itemArchived = itemArchived;
+    }
+
+    public boolean isItemApproved()
+    {
+        return itemApproved;
+    }
+
+    public void setItemApproved(boolean itemApproved)
+    {
+        this.itemApproved = itemApproved;
     }
 }
