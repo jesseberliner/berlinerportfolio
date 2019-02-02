@@ -1,9 +1,6 @@
 package com.berliner.portfolio.models.store;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -50,8 +47,11 @@ public class Item
     @NotNull
     private String itemLastEditor;
 
-    @NotNull
     private long itemCatId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="category_catid")
+    private Category category;
 
     private boolean itemArchived;
 
@@ -194,6 +194,16 @@ public class Item
     public void setItemCatId(long itemCatId)
     {
         this.itemCatId = itemCatId;
+    }
+
+    public Category getCategory()
+    {
+        return category;
+    }
+
+    public void setCategory(Category category)
+    {
+        this.category = category;
     }
 
     public boolean isItemArchived()

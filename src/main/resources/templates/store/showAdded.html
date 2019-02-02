@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="card-body">
                             <h1 class="card-title" th:text="*{itemTitle}"></h1>
-                            <p class="card-text" th:text="'$'+*{itemPrice}"></p>
+                            <p class="card-text" th:text="'$'+${#numbers.formatDecimal(newItem.itemPrice,1,2)}"></p>
                             <p class="card-text" th:text="*{#strings.abbreviate(itemDesc, 50)}"></p>
                         </div>
                     </div>
@@ -34,6 +34,7 @@
                     <td th:text="*{itemImg}"></td>
                     <td th:text="*{itemDesc}"></td>
                     <td th:text="'$'+*{itemPrice}"></td>
+                    <td th:text="'$'+${#numbers.formatDecimal(newItem.itemPrice,1,2)}"></td>
                     <td th:text="*{itemDisc}+'%'"></td>
                     <td><a th:text="*{itemStock}" th:href="@{/addstock/{id}(id=${newItem.getItemId()})}"></a></td>
                     <td th:text="*{itemCatId}"></td>

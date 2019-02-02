@@ -19,7 +19,7 @@
                     <td th:text="*{itemTitle}"></td>
                     <td th:text="*{itemImg}"></td>
                     <td th:text="*{itemDesc}"></td>
-                    <td th:text="'$'+*{itemPrice}"></td>
+                    <td th:text="'$'+${#numbers.formatDecimal(item.itemPrice,1,2)}"></td>
                     <td th:text="*{itemDisc}+'%'"></td>
                     <td th:text="*{itemStock}"></td>
                     <td th:text="*{itemCatId}"></td>

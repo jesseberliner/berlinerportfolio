@@ -44,13 +44,16 @@
             <span th:if="${#fields.hasErrors('itemStock')}" th:errors="*{itemStock}"></span>
             <br/>
 
-            <span><label for="item_taxable">Taxable </label>
-            <input type="checkbox" class="form-control" th:field="*{itemTaxable}" id="item_taxable" /></span>
+            <span><label for="itemTaxable">Taxable </label>
+            <input type="checkbox" class="form-control" th:field="*{itemTaxable}" id="itemTaxable" /></span>
             <br/>
 
-            <label for="dept">Department</label>
-            <input type="text" class="form-control" th:field="*{itemCatId}" id="dept" placeholder="Grocery, Furniture"/>
-            <span th:if="${#fields.hasErrors('itemCatId')}" th:errors="*{itemCatId}"></span>
+            <label for="itemCatId">Department</label><br/>
+            <select id="itemCatId" name="itemCatId">
+                <th:block th:each="cat : ${categories}">
+                    <option th:value="${cat.catId}" th:text="${cat.catTitle}"></option>
+                </th:block>
+            </select>
             <br/>
 
             <button type="submit" class="btn btn-primary">Submit</button>  <button type="reset" class="btn btn-primary">Reset</button>

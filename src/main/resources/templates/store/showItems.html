@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="card-body">
                         <h1 class="card-title" th:text="*{item.itemTitle}"></h1>
-                        <p class="card-text" th:text="'$'+*{item.itemPrice}"></p>
+                        <p class="card-text" th:text="'$'+${#numbers.formatDecimal(item.itemPrice,1,2)}"></p>
                         <p class="card-text" th:text="*{#strings.abbreviate(item.itemDesc,50)}"></p>
                     </div>
                 </div>

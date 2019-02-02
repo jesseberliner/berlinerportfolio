@@ -7,8 +7,41 @@
 </head>
 <body>
 <th:block th:replace="store/base :: storeNav"></th:block>
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <h2>Welcome to my portfolio store!</h2>
+            <p><a href="mailto:berlinerportfolio@gmail.com">Send me</a> suggestions, bug reports, or questions!</p>
+            <h2>Functionality and change log</h2>
+            <p><strong></strong>
+            <br/>
+            ********************************************</p>
+            <h3>Recent changes:</h3>
+            <p><strong>01.02.2019</strong><br/>
+            CHANGED: dollar formatting to reflect correct format<br/>
+            ADDED: main page "Functionality and Change Log" section<br/>
+            ADDED: main page email line
+            ********************************************</p>
+            <p><strong>31.01.2019</strong><br/>
+            ADDED: drop down to addItem for category<br>
+            ********************************************</p>
+            <p><strong>29.01.2019</strong><br/>
+            ADDED: auto-add category records to database on start if empty<br/>
+            ADDED: Category<br/>
+            ADDED: relationships between Category and Item<br/>
+            ********************************************</p>
+            <p><strong>26.01.2019</strong><br/>
+            ADDED: remove functionality<br/>
+            CHANGED: Item to reflect Java naming conventions-underscore doesn't work in repo queries<br/>
+            ********************************************</p>
+            <p><strong>25.01.2019</strong><br/>
+            ADDED: update functionality<br/>
+            CHANGED: nav links to work from any page "\" in store<br/>
+            </p>
+        </div>
+    </div>
+</div>
 <th:block th:replace="store/base :: storeFooter"></th:block>
-This is the body of Store Home
 </body>
 <th:block th:replace="store/base :: storeJS"></th:block>
 
