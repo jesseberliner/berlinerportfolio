@@ -56,14 +56,16 @@ public class StoreController
     {
         if(result.hasErrors())
         {
-            System.out.println(result.toString());
+            System.out.println("has errors");
             return "store/addItem";
         }
         if(file.isEmpty())
         {
+            System.out.println("fileEmpty");
             return "redirect:/addItem";
         }
         try {
+            System.out.println("try");
             Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
             item.setItemImg(uploadResult.get("url").toString());
         } catch (IOException e){

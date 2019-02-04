@@ -19,6 +19,8 @@ public class CloudinaryConfig
                             @Value("${cloudinary.apisecret}") String secret,
                             @Value("${cloudinary.cloudname}") String cloud)
     {
+        System.out.println("config");
+
         cloudinary = Singleton.getCloudinary();
         cloudinary.config.cloudName = cloud;
         cloudinary.config.apiSecret = secret;
@@ -28,6 +30,7 @@ public class CloudinaryConfig
     public Map upload(Object file, Map options)
     {
         try{
+            System.out.println("upload");
             return cloudinary.uploader().upload(file, options);
         } catch (IOException e){
             e.printStackTrace();
@@ -37,7 +40,6 @@ public class CloudinaryConfig
 
     public String createURL(String name, int width, int height, String action)
     {
-
         return cloudinary.url().transformation(new Transformation().width(width).height(height).border(
                 "2px_solid_block").crop(action)).imageTag(name);
     }
