@@ -4,14 +4,19 @@ import com.berliner.portfolio.models.store.Category;
 import com.berliner.portfolio.models.store.Item;
 import com.berliner.portfolio.repositories.store.CategoryRepository;
 import com.berliner.portfolio.repositories.store.ItemRepository;
+import com.berliner.portfolio.services.CloudinaryConfig;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -23,6 +28,10 @@ public class StoreController
 
     @Autowired
     CategoryRepository categoryRepo;
+
+    @Autowired
+    CloudinaryConfig cloudc;
+
 
     //all items
     @RequestMapping({"/store/showItems","/showItems"})
@@ -42,12 +51,26 @@ public class StoreController
     }
     //add item post
     @PostMapping({"/store/addItem","/addItem"})
-    public String addProduct(@Valid @ModelAttribute("newItem")Item item, BindingResult result)
+    public String addProduct(@Valid @ModelAttribute("newItem")Item item,
+                             @RequestParam("file") MultipartFile file, BindingResult result)
     {
         if(result.hasErrors())
         {
+            System.out.println(result.toString());
             return "store/addItem";
         }
+        if(file.isEmpty())
+        {
+            return "redirect:/addItem";
+        }
+        try {
+            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+            item.setItemImg(uploadResult.get("url").toString());
+        } catch (IOException e){
+            e.printStackTrace();
+            return "redirect:/addItem";
+        }
+
         //this pads the end of the description so that it's at least 50 chars to make displaying nicer
         while(item.getItemDesc().length()<50)
         {
@@ -67,7 +90,6 @@ public class StoreController
     @GetMapping({"/store/showDetail/{itemId}","/showDetail/{itemId}"})
     public String showDetail(@PathVariable("itemId") long id, Model model)
     {
-        System.out.println("showDetail");
         model.addAttribute("item", itemRepo.findById(id));
         return "store/showDetail";
     }

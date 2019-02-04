@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -14,6 +15,7 @@ public class Item
     private long itemId;
 
     @NotEmpty
+    @Size(min=1, max=20)
     private String itemTitle;
 
     @NotNull
@@ -21,6 +23,7 @@ public class Item
     private Double itemPrice;
 
     @NotEmpty
+    @Size(min=3, max=500)
     private String itemDesc;
 
 
@@ -32,7 +35,7 @@ public class Item
     @NotNull
     private int itemStock;
 
-    @NotNull
+
     private boolean itemTaxable;
 
     @NotNull
@@ -64,6 +67,7 @@ public class Item
         this.itemOwner = "NullOwner";
         this.itemLastEdited = new Date();
         this.itemLastEditor = "lastNullOwner";
+        this.itemApproved = false;
     }
 
     public long getItemId()

@@ -3,16 +3,16 @@
 <head>
     <th:block th:replace="store/base :: storeHead"></th:block>
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>Add or Modify an item</title>
 </head>
 <body>
 <th:block th:replace="store/base :: storeNav"></th:block>
 <th:block th:replace="store/base :: storeFooter"></th:block>
 <div class="container">
     <div class="row col-sm justify-content-center">
-        <form action="#" th:action="@{/store/addItem}" th:object="${newItem}" method="post">
+        <form action="#" th:action="@{/store/addItem}" th:object="${newItem}" method="POST" enctype="multipart/form-data">
             <input type="hidden" th:field="*{itemId}"/>
-            <h1>Add new product</h1>
+            <h1>Add a new product or modify an existing one</h1>
 
             <label for="name">Name</label>
             <input type="text" class="form-control" th:field="*{itemTitle}" id="name" placeholder="Product name"
@@ -31,7 +31,7 @@
             <br/>
 
             <label for="image">Image</label>
-            <input type="file" class="form-control" th:field="*{itemImg}" id="image" placeholder="Image file"/>
+            <input type="file" name="file" class="form-control" id="image" />
             <br/>
 
             <label for="discount">Discount percent</label>
