@@ -15,7 +15,7 @@ public class Category
 
     private String catTitle;
 
-    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "itemId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Item> items;
 
     //public Category(@NotEmpty String catTitle)

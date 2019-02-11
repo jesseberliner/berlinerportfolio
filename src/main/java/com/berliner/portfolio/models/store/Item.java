@@ -52,8 +52,8 @@ public class Item
 
     private long itemCatId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="catid")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="category_catid")
     private Category category;
 
     private boolean itemArchived;
