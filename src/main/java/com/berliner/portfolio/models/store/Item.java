@@ -53,7 +53,7 @@ public class Item
     private long itemCatId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_catid")
+    @JoinColumn(name="catid")
     private Category category;
 
     private boolean itemArchived;
