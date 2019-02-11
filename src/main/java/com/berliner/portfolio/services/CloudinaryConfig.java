@@ -19,8 +19,6 @@ public class CloudinaryConfig
                             @Value("${cloudinary.apisecret}") String secret,
                             @Value("${cloudinary.cloudname}") String cloud)
     {
-        System.out.println("config");
-
         cloudinary = Singleton.getCloudinary();
         cloudinary.config.cloudName = cloud;
         cloudinary.config.apiSecret = secret;
@@ -30,9 +28,9 @@ public class CloudinaryConfig
     public Map upload(Object file, Map options)
     {
         try{
-            System.out.println("upload");
             return cloudinary.uploader().upload(file, options);
         } catch (IOException e){
+            System.out.println("IOException");
             e.printStackTrace();
             return null;
         }
