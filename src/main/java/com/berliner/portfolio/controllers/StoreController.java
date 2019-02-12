@@ -45,7 +45,7 @@ public class StoreController
     public String addProduct(Model model)
     {
         model.addAttribute("newItem", new Item());
-        model.addAttribute("categories", categoryRepo.findAllOrOrderByCatTitle());
+        model.addAttribute("categories", categoryRepo.findAllOrderByCatTitle());
         return "store/addItem";
     }
     //add item post
