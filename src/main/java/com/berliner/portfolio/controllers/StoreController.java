@@ -84,6 +84,7 @@ public class StoreController
         items.add(item);
         category.setItems(items);
         category.setCatCount(category.getCatCount() + 1);
+        System.out.println(item.getItemId());
         categoryRepo.save(category);
 
         return "store/showAdded";
