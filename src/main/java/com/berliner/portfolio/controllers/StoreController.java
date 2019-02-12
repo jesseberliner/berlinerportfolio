@@ -15,9 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 @Controller
 public class StoreController
@@ -46,7 +45,7 @@ public class StoreController
     public String addProduct(Model model)
     {
         model.addAttribute("newItem", new Item());
-        model.addAttribute("categories", categoryRepo.findAll());
+        model.addAttribute("categories", categoryRepo.findAllOrOrderByCatTitle());
         return "store/addItem";
     }
     //add item post
@@ -62,7 +61,7 @@ public class StoreController
         if(file.isEmpty())
         {
             System.out.println("fileEmpty");
-            return "redirect:/addItem";
+            return "store/addItem";
         }
 //        try {
 //            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
@@ -84,7 +83,6 @@ public class StoreController
         items.add(item);
         category.setItems(items);
         category.setCatCount(category.getCatCount() + 1);
-        System.out.println(item.getItemId());
         categoryRepo.save(category);
 
         return "store/showAdded";
