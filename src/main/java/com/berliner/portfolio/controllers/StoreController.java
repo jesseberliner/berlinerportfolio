@@ -63,14 +63,14 @@ public class StoreController
             System.out.println("fileEmpty");
             return "store/addItem";
         }
-//        try {
-//            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-//            item.setItemImg(uploadResult.get("url").toString());
-//            System.out.println(uploadResult.get("url").toString());
-//        } catch (IOException e){
-//            e.printStackTrace();
-//            return "redirect:/addItem";
-//        }
+        try {
+            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+            item.setItemImg(uploadResult.get("url").toString());
+            System.out.println(uploadResult.get("url").toString());
+        } catch (IOException e){
+            e.printStackTrace();
+            return "redirect:/addItem";
+        }
 
         //this pads the end of the description so that it's at least 50 chars to make displaying nicer
         while(item.getItemDesc().length()<50)
